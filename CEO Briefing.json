@@ -1,0 +1,624 @@
+{
+  "name": "CEO Briefing",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 6
+            },
+            {}
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        -304,
+        176
+      ],
+      "id": "45244bdd-eb96-40d9-a483-592505032121",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "url": "https://feeds.cms.handelsblatt.com/schlagzeilen",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        240,
+        -224
+      ],
+      "id": "0fec892d-5295-4172-9d64-ad8f83695b18",
+      "name": "RSS Handelsblatt"
+    },
+    {
+      "parameters": {
+        "url": "https://www.ft.com/business-education?format=rss",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        240,
+        416
+      ],
+      "id": "5311f18a-4a08-4a02-82a1-c4b027e62086",
+      "name": "RSS Financial Times"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 4
+          },
+          "conditions": [
+            {
+              "id": "8531b038-7ff2-4b48-a819-8ac25b773a93",
+              "leftValue": "={{ $json.title }}",
+              "rightValue": "Bank",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "c475c23d-dd71-41c4-9396-6687451577b5",
+              "leftValue": "={{ $json.title }}",
+              "rightValue": "Zinsen",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "2ed0f58a-cc63-4c7e-a84c-33937c25549b",
+              "leftValue": "={{ $json.title }}",
+              "rightValue": "EZB",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "6e801b69-1e70-4ee0-b2dc-791ba76ba783",
+              "leftValue": "={{ $json.title }}",
+              "rightValue": "FED",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "7b041e41-d9ae-486b-bb86-4b5a45944937",
+              "leftValue": "={{ $json.title }}",
+              "rightValue": "UBS",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "b7bf1aa1-5790-432d-827b-2876542d1d52",
+              "leftValue": "={{ $json.title }}",
+              "rightValue": "Commerz Bank",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "1481cdbb-1562-491a-8f9b-5c2a62d36372",
+              "leftValue": "={{ $json.title }}",
+              "rightValue": "Uni Credit",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "9eda4c65-a1f9-47a7-a38e-0b7cde2b82d3",
+              "leftValue": "={{ $json.title }}",
+              "rightValue": "HSBC",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "f9bc3680-8241-4df6-af96-c555fcddf33f",
+              "leftValue": "={{ $json.title }}",
+              "rightValue": "Deutsche Bank",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "2bc01de2-1af7-433a-9a5f-670cdbc9eb60",
+              "leftValue": "={{ $json.title }}",
+              "rightValue": "BaFin",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.4,
+      "position": [
+        848,
+        -32
+      ],
+      "id": "1599c633-2402-4d27-ac83-430ddde278de",
+      "name": "Keyword Filter DE"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 4
+          },
+          "conditions": [
+            {
+              "id": "6aec1759-7f07-409d-8972-df53556f8a2f",
+              "leftValue": "={{ $json.title }}",
+              "rightValue": "Bank",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "cb6bb558-019e-4d5f-81f0-9af05ff32666",
+              "leftValue": "={{ $json.title }}",
+              "rightValue": "FED",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "ae626357-90a6-49f5-8d30-3b4123362e34",
+              "leftValue": "={{ $json.title }}",
+              "rightValue": "interest rates",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "5d8792c3-f515-4939-9866-b3fb3eaf2678",
+              "leftValue": "={{ $json.title }}",
+              "rightValue": "Powell",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "f6f1d789-183b-4413-8454-45ce1b9aaf35",
+              "leftValue": "={{ $json.title }}",
+              "rightValue": "EZB",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "ed9ec54f-8d42-4055-b3dd-2c318c43833f",
+              "leftValue": "={{ $json.title }}",
+              "rightValue": "Deutsche Bank",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "d473a5ba-0959-49a2-97e0-dc906ff2befb",
+              "leftValue": "={{ $json.title }}",
+              "rightValue": "HSBC",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "eed4e0b0-2aa8-4f2d-acf8-2898cf95852e",
+              "leftValue": "={{ $json.title }}",
+              "rightValue": "UBS",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "a3114bcb-8655-4b12-8639-37dc1e1930a5",
+              "leftValue": "={{ $json.title }}",
+              "rightValue": "Goldman Sachs",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "14e29d39-cf10-40a7-8dd4-edc597045d2d",
+              "leftValue": "={{ $json.title }}",
+              "rightValue": "monetary policy",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.4,
+      "position": [
+        864,
+        368
+      ],
+      "id": "9f0e714f-0175-4f0c-b24c-f33b3b5724d1",
+      "name": "Keyword Filter ENG"
+    },
+    {
+      "parameters": {
+        "url": "https://www.wallstreet-online.de/rss/nachrichten-alle.xml",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        240,
+        192
+      ],
+      "id": "5984a8a5-3e23-4117-b9bb-5e4222a1dc25",
+      "name": "RSS WS-online"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "models/gemini-3.8-flash",
+          "mode": "list",
+          "cachedResultName": "Gemini 3.8 Flash"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Hintergrund: \nDu bist ein Senior Executive Assistant im CEO-Office der Deutschen Bank. Deine Aufgabe ist es, aus rohen RSS-Nachrichtendaten ein präzises, top-down strukturiertes tägliches Briefing zu erstellen.\n\n\nDeine Aufgaben:\n\nAnalysiere das angehängte JSON-Datenpaket mit den heutigen Nachrichten.\n\nFiltere die relevantesten Artikel für das Top-Management heraus. WICHTIG: Relevanz bedeutet NICHT nur Nachrichten über die Deutsche Bank. Hochrelevant sind zwingend auch: Allgemeine Geldpolitik (EZB, FED, Zinsen), Bewegungen von direkten Wettbewerbern (UBS, JPMorgan, Commerzbank etc.) und große makroökonomische Verschiebungen.\n\nÜbersetze englische Kerninformationen ins Deutsche.\n\nFormatiere den Output zwingend in folgende drei Markdown-Kategorien. Fasse die Lage in 2-3 Bulletpoints pro Kategorie zusammen und hänge den Link zum Originalartikel an. Sprich den CEO nicht direkt an.\n\n\nGewünschtes Output-Format:\n\n1. Makroökonomie & Geldpolitik\n(Zusammenfassung der Zins- und Wirtschaftslage + Links)\n\n2. Wettbewerber & Marktdynamik\n(Was machen andere Großbanken? + Links)\n\n3. Deutsche Bank & Regulatorik\n(Spezifische News zur Bank oder direkten Aufsicht + Links)\n\n\nHier die Daten zu den relevanten Nachrichten:\n{{ JSON.stringify($json.data, null, 2) }}"
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1.2,
+      "position": [
+        1840,
+        160
+      ],
+      "id": "4e6952a3-a0ed-4ecb-9ea1-b77307b1e652",
+      "name": "Message a model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": null,
+          "name": "",
+          "__aiGatewayManaged": true
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://www.ad-hoc-news.de/rss/nachrichten.xml",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        240,
+        -32
+      ],
+      "id": "bfcfd1eb-1e07-4f5d-a657-0037ca3e4763",
+      "name": "RSS ad-hoc-Nachrichten"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        1280,
+        160
+      ],
+      "id": "b9198ace-4af3-4c1a-95ca-f56d2c7d9e44",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        1568,
+        160
+      ],
+      "id": "e3ea0ed5-6eed-4bfc-a8a9-d86f94cd08f6",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "content": "## CEO-KI-Briefing-Agent\n\nStatus: \nFunktionaler Prototyp für das CEO-Office.\n\nDatenbeschaffung: \nAutomatisierter Abruf von Finanz-RSS-Feeds (täglich um 06:00 Uhr), vorgefiltert nach strategischen Makro- und Wettbewerber-Keywords.\n\nKI-Auswertung: \nGemini analysiert die gesammelten Artikeltexte, übersetzt englische Inhalte und strukturiert alles in ein dreiteiliges Top-Down-Briefing (Makro, Wettbewerb, Regulatorik).\n\nAuslieferung: \nAutomatisierter E-Mail-Versand des finalen Reports per Mail.",
+        "height": 384,
+        "width": 352
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        992,
+        -608
+      ],
+      "typeVersion": 1,
+      "id": "e2427b7f-4f5d-4473-9fc0-c7d44cdbe930",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "toRecipients": "wiedemann.moritz@outlook.com",
+        "subject": "Tägliches Nachrichten Update",
+        "bodyContent": "=Sehr geehrter Herr Sewing,\n\nhier eine Zusammenfassung der aktuellen, relevanten Nachrichten:\n\n {{ $json.content.parts[0].text }}\n\nMit freundlichen Grüßen\nMoritz Wiedemann",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.microsoftOutlook",
+      "typeVersion": 2,
+      "position": [
+        2320,
+        160
+      ],
+      "id": "81feb550-df1a-473b-a3a8-d609d531893e",
+      "name": "Send a message",
+      "webhookId": "5e587dc6-a42a-4668-a3eb-00959df061a0",
+      "credentials": {
+        "microsoftOutlookOAuth2Api": {
+          "id": "Y8pFw1ZTQbqOJpab",
+          "name": "Microsoft Outlook account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://feeds.content.dowjones.io/public/rss/socialeconomyfeed",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        240,
+        640
+      ],
+      "id": "3a63e145-8e37-4a04-b221-4a4988a18e37",
+      "name": "RSS WSJ"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        688,
+        368
+      ],
+      "id": "e091419a-8b6a-426b-beae-f51f1f51d09f",
+      "name": "Merge ENG"
+    },
+    {
+      "parameters": {
+        "numberInputs": 3
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        672,
+        -48
+      ],
+      "id": "43c87b1e-1ee2-4629-93b3-e66868dc96f7",
+      "name": "Merge DE"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "RSS Handelsblatt",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS Financial Times",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS WSJ",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS WS-online",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS ad-hoc-Nachrichten",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RSS Handelsblatt": {
+      "main": [
+        [
+          {
+            "node": "Merge DE",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RSS Financial Times": {
+      "main": [
+        [
+          {
+            "node": "Merge ENG",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RSS WS-online": {
+      "main": [
+        [
+          {
+            "node": "Merge DE",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "Keyword Filter DE": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Keyword Filter ENG": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "RSS ad-hoc-Nachrichten": {
+      "main": [
+        [
+          {
+            "node": "Merge DE",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Message a model": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Message a model",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RSS WSJ": {
+      "main": [
+        [
+          {
+            "node": "Merge ENG",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge ENG": {
+      "main": [
+        [
+          {
+            "node": "Keyword Filter ENG",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge DE": {
+      "main": [
+        [
+          {
+            "node": "Keyword Filter DE",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "0870d96f-8a7f-4e8d-9bca-7b8ccc991caa",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "1782b6528beb9639ea225bc185fd766cad0494cfd60e5835ea3798c02d38bfef"
+  },
+  "nodeGroups": [],
+  "id": "UiHjQakpEtS0l4FC",
+  "tags": []
+}
