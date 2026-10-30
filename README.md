@@ -8,9 +8,9 @@ Entwicklung eines automatisierten Market-Intelligence-Workflows (n8n & Gemini-AP
 
 Der Workflow läuft vollautomatisiert täglich um 06:00 Uhr ab und durchläuft drei Kernphasen:
 
-1. **Datenbeschaffung & Vorfilterung:** Paralleler Abruf relevanter Finanz-RSS-Feeds (Handelsblatt, Financial Times, Reuters etc.). Ein integriertes Keyword-Routing filtert irrelevantes Rauschen heraus und isoliert strategisch bedeutsame Artikel zu Makroökonomie, direkten Wettbewerbern und Regulatorik.
-2. **KI-Analyse & Strukturierung (Gemini API):** Die gebündelten Rohdaten werden als formatiertes JSON an das LLM übergeben. Das Modell übersetzt englische Kerninformationen und kategorisiert die Daten in feste strategische Säulen.
-3. **Automatisierte Auslieferung:** Das final generierte Briefing wird über einen dedizierten Microsoft Outlook-Node als strukturierte E-Mail an das CEO-Office versendet.
+1. **Datenbeschaffung & Vorfilterung:** Paralleler Abruf relevanter Finanz-RSS-Feeds (Handelsblatt, Financial Times, WSJ etc.). Zwei Keyword-Routings (Eines für DE und eines für ENG) filtern irrelevantes Artikel heraus und isoliert strategisch bedeutsame Artikel zu Makroökonomie, direkten Wettbewerbern und Regulatorik.
+2. **KI-Analyse & Strukturierung (Gemini API):** Die gebündelten Rohdaten werden als formatiertes JSON an das LLM übergeben. Das Modell übersetzt englische Kerninformationen, überprüft auf Relevanz, fasst Inhalte zusammen und kategorisiert die Daten abschließend in drei feste strategische Säulen.
+3. **Automatisierte Auslieferung:** Das final generierte Briefing wird über einen Microsoft Outlook-Node als strukturierte E-Mail an das CEO-Office versendet.
 
 ## 📊 Ergebnis: Das Executive Briefing
 
