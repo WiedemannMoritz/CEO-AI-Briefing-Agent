@@ -4,8 +4,7 @@ Entwicklung eines automatisierten Market-Intelligence-Workflows (n8n & Gemini-AP
 
 ## ⚙️ Architektur & Prozessablauf
 
-![n8n Workflow Architektur]("C:\Users\momow\Downloads\n8n_CEO-Briefing.png")
-*(Hinweis: Dateipfad des hochgeladenen Workflow-Bildes hier einfügen)*
+<img width="918" height="343" alt="n8n_CEO-Briefing" src="https://github.com/user-attachments/assets/6de1d08e-2bc8-4335-b7fc-5752bda1508b" />
 
 Der Workflow läuft vollautomatisiert täglich um 06:00 Uhr ab und durchläuft drei Kernphasen:
 
@@ -15,8 +14,7 @@ Der Workflow läuft vollautomatisiert täglich um 06:00 Uhr ab und durchläuft d
 
 ## 📊 Ergebnis: Das Executive Briefing
 
-![Finales E-Mail Briefing]("C:\Users\momow\Downloads\Mail_CEO-Briefing.png")
-*(Hinweis: Dateipfad des hochgeladenen E-Mail-Bildes hier einfügen)*
+<img width="1040" height="288" alt="Mail_CEO-Briefing" src="https://github.com/user-attachments/assets/d042c59f-3c2e-44e2-8898-cca77ba7ea7d" />
 
 Das Output-Format liefert dem Management eine sofortige Übersicht der aktuellen Marktdynamik. Das LLM ist dabei so konfiguriert, dass es fehlende Marktbewegungen in spezifischen Sektoren proaktiv als "Keine signifikanten Meldungen" deklariert, um eine effiziente Informationsaufnahme zu garantieren.
 
