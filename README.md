@@ -1,6 +1,6 @@
 # CEO-AI-Briefing-Agent
 
-Entwicklung eines automatisierten Market-Intelligence-Workflows (n8n & Gemini-API) zur Echtzeit-Aggregation von Finanznachrichten und Erstellung strukturierter Top-Down-Management-Briefings. Dieses Proof of Concept (PoC) wurde entwickelt, um strategische Informationsflüsse für das C-Level zu optimieren.
+Entwicklung eines automatisierten Market-Intelligence-Workflows (n8n & Gemini) zur Echtzeit-Aggregation von Finanznachrichten und Erstellung strukturierter Top-Down-Management-Briefings. Das Tool wurde entwickelt, um strategische Informationsflüsse für das C-Level zu optimieren.
 
 ## ⚙️ Architektur & Prozessablauf
 
